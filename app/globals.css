@@ -334,7 +334,12 @@ a {
   justify-content: space-between;
   gap: 24px;
 }
-
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 .hero__pill {
   display: inline-block;
   min-width: 170px;
