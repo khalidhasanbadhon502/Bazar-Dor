@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# বাজার দর (Bazar Dor)
 
-## Getting Started
+"বাজার দর" হলো একটি আধুনিক ও রিয়েল-টাইম ওয়েব অ্যাপ্লিকেশন, যার মাধ্যমে ব্যবহারকারীরা প্রতিদিনের নিত্যপ্রয়োজনীয় পণ্যের বাজার দর, দামের পরিবর্তন এবং বিভিন্ন বাজারের তুলনামূলক মূল্যতালিকা এক নজরে দেখতে পারেন।
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## লাইভ সাইট ডেমো (Live Demo)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [লাইভ ওয়েবসাইট লিংক](https://bazar-dor-six-zeta.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## মূল ফিচারসমূহ (Key Features):
 
-## Learn More
+* **দৈনিক বাজার দর:** চাল, ডাল, তেল, সবজি, মাছ ও মাংসসহ সব নিত্যপণ্যের রিয়েল-টাইম মূল্য তালিকা।
+* **দামের পরিবর্তন ট্র্যাকিং:** পণ্যের দাম বৃদ্ধি বা হ্রাস চিহ্নিত করার সুবিধা।
+* **ক্যাটাগরিভিত্তিক ফিল্টারিং:** সহজে পণ্য খুঁজে পাওয়ার জন্য সুনির্দিষ্ট ক্যাটাগরি সিস্টেম।
+* **সামাজিক লগইন (Social Authentication):** Google এবং GitHub ব্যবহার করে দ্রুত ও নিরাপদ সাইন-ইন/সাইন-আপ।
+* **রেসপনসিভ ডিজাইন:** মোবাইল, ট্যাবলেট এবং ডেস্কটপ সব ডিভাইসে স্বাচ্ছন্দ্যে ব্যবহারের উপযোগী UI/UX।
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ব্যবহৃত টেকনোলজি (Tech Stack):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Front-end Framework:** Next.js (React)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS & DaisyUI
+* **Icons:** React Icons
+* **Deployment:** Vercel 
