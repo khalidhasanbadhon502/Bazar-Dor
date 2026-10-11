@@ -4,55 +4,50 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { GoogleIcon, GitHubIcon } from "@/components/SocialIcons";
 
 export default function SignUpPage() {
   const router = useRouter();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirm: "",
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const set = (key: keyof typeof form) => (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => setForm({ ...form, [key]: e.target.value });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (form.password.length < 8) {
-      const errMsg = "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।";
-      setError(errMsg);
-      toast.error(errMsg);
+    if (!name || !email || !password || !confirm) {
+      toast.error("সব ঘর পূরণ করুন।");
       return;
     }
-    if (form.password !== form.confirm) {
-      const errMsg = "দুটি পাসওয়ার্ড মেলেনি।";
-      setError(errMsg);
-      toast.error(errMsg);
+    if (password.length < 8) {
+      const msg = "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।";
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+    if (password !== confirm) {
+      const msg = "দুটি পাসওয়ার্ড মেলেনি।";
+      setError(msg);
+      toast.error(msg);
       return;
     }
 
     setLoading(true);
-    const { error } = await authClient.signUp.email({
-      name: form.name,
-      email: form.email,
-      password: form.password,
-    });
+    const { error } = await authClient.signUp.email({ name, email, password });
     setLoading(false);
 
     if (error) {
-      const errMsg = error.message || "অ্যাকাউন্ট তৈরি করা যায়নি। আবার চেষ্টা করুন।";
-      setError(errMsg);
-      toast.error(errMsg);
+      const msg = error.message || "অ্যাকাউন্ট তৈরি করা যায়নি।";
+      setError(msg);
+      toast.error(msg);
       return;
     }
 
-    toast.success("সফলভাবে অ্যাকাউন্ট তৈরি করা হয়েছে!");
+    toast.success("অ্যাকাউন্ট তৈরি হয়েছে!");
     router.push("/");
     router.refresh();
   }
@@ -63,10 +58,8 @@ export default function SignUpPage() {
 
   return (
     <div className="container auth">
-      <h1 className="auth__title">অ্যাকাউন্ট তৈরি করুন</h1>
-      <p className="auth__sub">
-        বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
-      </p>
+      <h1 className="auth__title">সাইন আপ</h1>
+      <p className="auth__sub">নতুন অ্যাকাউন্ট তৈরি করে শুরু করুন।</p>
 
       <form className="auth__card" onSubmit={handleSubmit}>
         {error && <p className="form-error">{error}</p>}
@@ -75,10 +68,11 @@ export default function SignUpPage() {
           <label htmlFor="name">নাম</label>
           <input
             id="name"
+            type="text"
             className="input"
-            placeholder="যেমন: রহিম উদ্দিন"
-            value={form.name}
-            onChange={set("name")}
+            placeholder="আপনার নাম"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
@@ -89,8 +83,8 @@ export default function SignUpPage() {
             type="email"
             className="input"
             placeholder="you@example.com"
-            value={form.email}
-            onChange={set("email")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -101,8 +95,8 @@ export default function SignUpPage() {
             type="password"
             className="input"
             placeholder="কমপক্ষে ৮ অক্ষর"
-            value={form.password}
-            onChange={set("password")}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
@@ -113,8 +107,8 @@ export default function SignUpPage() {
             type="password"
             className="input"
             placeholder="আবার লিখুন"
-            value={form.confirm}
-            onChange={set("confirm")}
+            value={confirm}
+            onChange={(e) => setConfirm(e.target.value)}
             required
           />
         </div>
@@ -131,14 +125,16 @@ export default function SignUpPage() {
             className="btn-social"
             onClick={() => social("google")}
           >
-            Google দিয়ে চালিয়ে যান
+            <GoogleIcon />
+            <span>Google দিয়ে চালিয়ে যান</span>
           </button>
           <button
             type="button"
             className="btn-social"
             onClick={() => social("github")}
           >
-            GitHub দিয়ে চালিয়ে যান
+            <GitHubIcon />
+            <span>GitHub দিয়ে চালিয়ে যান</span>
           </button>
         </div>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { GoogleIcon, GitHubIcon } from "@/components/SocialIcons";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -88,14 +89,16 @@ export default function SignInPage() {
             className="btn-social"
             onClick={() => social("google")}
           >
-            Google দিয়ে চালিয়ে যান
+            <GoogleIcon />
+            <span>Google দিয়ে চালিয়ে যান</span>
           </button>
           <button
             type="button"
             className="btn-social"
             onClick={() => social("github")}
           >
-            GitHub দিয়ে চালিয়ে যান
+            <GitHubIcon />
+            <span>GitHub দিয়ে চালিয়ে যান</span>
           </button>
         </div>
 
